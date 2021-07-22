@@ -1,0 +1,25 @@
+{
+  "name": "mmzaghlool",
+  "version": "1.0.0",
+  "description": "Typescript general lib",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmzaghlool52/js-lib.git"
+  },
+  "keywords": [
+    "js",
+    "ts",
+    "mmzaghlool",
+    "math"
+  ],
+  "author": "mmzaghlool52@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmzaghlool52/js-lib/issues"
+  },
+  "homepage": "https://github.com/mmzaghlool52/js-lib#readme"
+}
