@@ -1,8 +1,17 @@
 "use strict";
 exports.__esModule = true;
+/**
+ * Class for math operations not included in js Math Object
+ * @class MyMath
+ */
 var MyMath = /** @class */ (function () {
     function MyMath() {
     }
+    /**
+     * Sum function using recursion
+     * @param arr number[] array of numbers to get the sum of
+     * @returns number The sum of the array numbers
+     */
     MyMath.recursionSum = function (arr) {
         var len = arr.length;
         if (len > 1) {
