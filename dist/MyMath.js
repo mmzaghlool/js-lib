@@ -1,4 +1,9 @@
 "use strict";
+var __spreadArray = (this && this.__spreadArray) || function (to, from) {
+    for (var i = 0, il = from.length, j = to.length; i < il; i++, j++)
+        to[j] = from[i];
+    return to;
+};
 exports.__esModule = true;
 /**
  * Class for math operations not included in js Math Object
@@ -12,7 +17,7 @@ var MyMath = /** @class */ (function () {
      * @param arr number[] array of numbers to get the sum of
      * @returns number The sum of the array numbers
      *
-     * @example Lib.Math.recursionSum([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+     * @example MMZaghlool.Math.recursionSum([1, 2, 3, 4, 5, 6, 7, 8, 9]);
      */
     MyMath.recursionSum = function (arr) {
         var len = arr.length;
@@ -29,7 +34,7 @@ var MyMath = /** @class */ (function () {
      * @param arr number[] array of numbers to get get sorted
      * @returns number[] The sorted array
      *
-     * @example Lib.Math.sectionSortAsc([6, 7, 8, 9, 5, 6, 7, 3, 2, 1]);
+     * @example MMZaghlool.Math.sectionSortAsc([6, 7, 8, 9, 5, 6, 7, 3, 2, 1]);
      */
     MyMath.sectionSortAsc = function (arr) {
         var len = arr.length;
@@ -50,7 +55,7 @@ var MyMath = /** @class */ (function () {
      * @param arr number[] array of numbers to get get sorted
      * @returns number[] The sorted array
      *
-     * @example Lib.Math.sectionSortDesc([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+     * @example MMZaghlool.Math.sectionSortDesc([1, 2, 3, 4, 5, 6, 7, 8, 9]);
      */
     MyMath.sectionSortDesc = function (arr) {
         var len = arr.length;
@@ -65,6 +70,66 @@ var MyMath = /** @class */ (function () {
             _loop_2(i);
         }
         return sorted;
+    };
+    /**
+     * Sort array of numbers ascending using quick sort algorithm
+     * @param arr number[] array of numbers to get get sorted
+     * @returns number[] The sorted array
+     *
+     * @example MMZaghlool.Math.quickSortAsc([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+     */
+    MyMath.quickSortAsc = function (arr) {
+        var len = arr.length;
+        if (len < 2) {
+            return arr;
+        }
+        else {
+            var pivot = arr[0];
+            var leftPartition = [];
+            var rightPartition = [];
+            for (var i = 1; i < len; i++) {
+                var element = arr[i];
+                if (element < pivot) {
+                    leftPartition.push(element);
+                }
+                else {
+                    rightPartition.push(element);
+                }
+            }
+            leftPartition = this.quickSortAsc(leftPartition);
+            rightPartition = this.quickSortAsc(rightPartition);
+            return __spreadArray(__spreadArray(__spreadArray([], leftPartition), [pivot]), rightPartition);
+        }
+    };
+    /**
+     * Sort array of numbers descending using quick sort algorithm
+     * @param arr number[] array of numbers to get get sorted
+     * @returns number[] The sorted array
+     *
+     * @example MMZaghlool.Math.quickSortDesc([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+     */
+    MyMath.quickSortDesc = function (arr) {
+        var len = arr.length;
+        if (len < 2) {
+            return arr;
+        }
+        else {
+            var pivot = arr[0];
+            var leftPartition = [];
+            var rightPartition = [];
+            for (var i = 1; i < len; i++) {
+                var element = arr[i];
+                if (element > pivot) {
+                    leftPartition.push(element);
+                }
+                else {
+                    rightPartition.push(element);
+                }
+            }
+            leftPartition = this.quickSortDesc(leftPartition);
+            rightPartition = this.quickSortDesc(rightPartition);
+            return __spreadArray(__spreadArray(__spreadArray([], leftPartition), [pivot]), rightPartition);
+        }
     };
     return MyMath;
 }());

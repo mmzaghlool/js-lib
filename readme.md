@@ -1,5 +1,11 @@
 # Typescript lib
 
+## npm package
+
+```url
+https://www.npmjs.com/package/mmzaghlool
+```
+
 ## Installing
 
 ```bash
@@ -23,6 +29,8 @@ import MMZaghlool from "mmzaghlool";
 1. [recursionSum](#recursion-sum)
 2. [sectionSortDesc](#section-sort-desc)
 3. [sectionSortAsc](#section-sort-asc)
+4. [quickSortDesc](#quick-sort-desc)
+5. [quickSortAsc](#quick-sort-asc)
 
 ### Recursion Sum
 
@@ -58,4 +66,28 @@ const arr = [6, 7, 8, 9, 5, 6, 7, 3, 2, 1];
  * @returns number[] The sorted array
  */
 MMZaghlool.Math.sectionSortAsc(arr);
+```
+
+### Quick Sort Desc
+
+```javascript
+const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+/**
+ * Sort array of numbers descending using quick sort algorithm
+ * @param arr number[] array of numbers to get get sorted
+ * @returns number[] The sorted array
+ */
+MMZaghlool.Math.quickSortDesc(arr);
+```
+
+### Quick Sort Asc
+
+```javascript
+const arr = [6, 7, 8, 9, 5, 6, 7, 3, 2, 1];
+/**
+ * Sort array of numbers ascending using quick sort algorithm
+ * @param arr number[] array of numbers to get get sorted
+ * @returns number[] The sorted array
+ */
+MMZaghlool.Math.quickSortAsc(arr);
 ```
