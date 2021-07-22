@@ -1,10 +1,30 @@
-# Typescript general lib
+# Typescript lib
+
+## Installing
+
+```bash
+npm i mmzaghlool
+```
+
+## Importing
+
+### ES5
+
+```javascript
+const MMZaghlool = require("mmzaghlool");
+```
+
+### ES6
+
+```javascript
+import MMZaghlool from "mmzaghlool";
+```
 
 1. [recursionSum](#recursion-sum)
 2. [sectionSortDesc](#section-sort-desc)
 3. [sectionSortAsc](#section-sort-asc)
 
-## Recursion Sum
+### Recursion Sum
 
 ```javascript
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -13,10 +33,10 @@ const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
  * @param arr number[] array of numbers to get the sum of
  * @returns number The sum of the array numbers
  */
-Lib.Math.recursionSum(arr);
+MMZaghlool.Math.recursionSum(arr);
 ```
 
-## Section Sort Desc
+### Section Sort Desc
 
 ```javascript
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -25,10 +45,10 @@ const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
  * @param arr number[] array of numbers to get get sorted
  * @returns number[] The sorted array
  */
-Lib.Math.sectionSortDesc(arr);
+MMZaghlool.Math.sectionSortDesc(arr);
 ```
 
-## Section Sort Asc
+### Section Sort Asc
 
 ```javascript
 const arr = [6, 7, 8, 9, 5, 6, 7, 3, 2, 1];
@@ -37,5 +57,5 @@ const arr = [6, 7, 8, 9, 5, 6, 7, 3, 2, 1];
  * @param arr number[] array of numbers to get get sorted
  * @returns number[] The sorted array
  */
-Lib.Math.sectionSortAsc(arr);
+MMZaghlool.Math.sectionSortAsc(arr);
 ```
