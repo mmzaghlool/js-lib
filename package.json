@@ -21,8 +21,5 @@
   "bugs": {
     "url": "https://github.com/mmzaghlool52/js-lib/issues"
   },
-  "homepage": "https://github.com/mmzaghlool52/js-lib#readme",
-  "publishConfig": {
-    "registry": "https://www.npmjs.com/package/mmzaghlool"
-  }
+  "homepage": "https://github.com/mmzaghlool52/js-lib#readme"
 }
