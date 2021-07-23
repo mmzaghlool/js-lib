@@ -1,6 +1,6 @@
 {
   "name": "mmzaghlool",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Typescript general lib",
   "main": "index.js",
   "scripts": {
@@ -12,8 +12,12 @@
   },
   "keywords": [
     "js",
+    "JavaScript",
     "ts",
-    "mmzaghlool",
+    "TypeScript",
+    "sorting",
+    "Selection Sorting",
+    "Quick Sorting",
     "math"
   ],
   "author": "mmzaghlool52@gmail.com",
