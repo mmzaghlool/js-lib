@@ -19,22 +19,21 @@ npm i mmzaghlool
 
 ```javascript
 const MMZaghlool = require("mmzaghlool");
+const { sortingTypes } = require("mmzaghlool");
 ```
 
 ### ES6
 
 ```javascript
-import MMZaghlool from "mmzaghlool";
+import MMZaghlool, { sortingTypes } from "mmzaghlool";
 ```
 
 <!-- 1. [Math](#math) -->
 
 1. [Recursion Sum](#recursion-sum)
 2. [Sorting](#sorting)
-   - [Section Sort descending](#section-sort-descending)
-   - [Section Sort ascending](#section-sort-ascending)
-   - [Quick Sort descending](#quick-sort-descending)
-   - [Quick Sort ascending](#quick-sort-ascending)
+   - [Section Sort](#section-sort)
+   - [Quick Sort](#quick-sort)
 
 <!-- ## Math -->
 
@@ -50,44 +49,38 @@ MMZaghlool.Math.recursionSum(arr);
 
 ## Sorting
 
-### Section Sort descending
+### Section Sort
 
-Sort array of numbers descending using selection sort algorithm it takes an array of numbers and return the sorted array
+Sort array of numbers or objects ascending or descending using selection sort algorithm
+
+It takes an array of numbers or objects and return the sorted array
 
 ```javascript
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// Sort array of numbers
+const arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-MMZaghlool.Math.sectionSortDesc(arr);
+MMZaghlool.Math.sectionSort(arr1, sortingTypes.DESCENDING)
+
+// Sort array of objects based on "id" attribute
+const arr2 = [{ id: 5 }, { id: 7 }, { id: 3 }, { id: 2 }, { id: 9 }];
+MMZaghlool.Math.sectionSort(arr2, sortingTypes.ASCENDING, "id")
 ```
 
-### Section Sort ascending
+### Quick Sort
 
-Sort array of numbers ascending using selection sort algorithm it takes an array of numbers and return the sorted array
+Sort array of numbers or objects ascending or descending using quick sort algorithm
 
-```javascript
-const arr = [6, 7, 8, 9, 5, 6, 7, 3, 2, 1];
-
-MMZaghlool.Math.sectionSortAsc(arr);
-```
-
-### Quick Sort descending
-
-Sort array of numbers descending using quick sort algorithm it takes an array of numbers and return the sorted array
+It takes an array of numbers or objects and return the sorted array
 
 ```javascript
-const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+// Sort array of numbers
+const arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-MMZaghlool.Math.quickSortDesc(arr);
-```
+MMZaghlool.Math.quickSort(arr1, sortingTypes.DESCENDING)
 
-### Quick Sort ascending
-
-Sort array of numbers ascending using quick sort algorithm it takes an array of numbers and return the sorted array
-
-```javascript
-const arr = [6, 7, 8, 9, 5, 6, 7, 3, 2, 1];
-
-MMZaghlool.Math.quickSortAsc(arr);
+// Sort array of objects based on "id" attribute
+const arr2 = [{ id: 5 }, { id: 7 }, { id: 3 }, { id: 2 }, { id: 9 }];
+MMZaghlool.Math.quickSort(arr2, sortingTypes.ASCENDING, "id")
 ```
 
 ## Reach Me

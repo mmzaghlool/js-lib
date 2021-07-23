@@ -1,15 +1,9 @@
-/**
- * Class for math operations not included in js Math Object
- * @class MyMath
- */
+export enum sortingTypes {
+  ASCENDING,
+  DESCENDING,
+}
+
 export default class MyMath {
-  /**
-   * Sum function using recursion
-   * @param arr number[] array of numbers to get the sum of
-   * @returns number The sum of the array numbers
-   *
-   * @example MMZaghlool.Math.recursionSum([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-   */
   static recursionSum(arr: number[]): number {
     const len = arr.length;
 
@@ -21,113 +15,98 @@ export default class MyMath {
     }
   }
 
-  /**
-   * Sort array of numbers ascending using selection sort algorithm
-   * @param arr number[] array of numbers to get get sorted
-   * @returns number[] The sorted array
-   *
-   * @example MMZaghlool.Math.sectionSortAsc([6, 7, 8, 9, 5, 6, 7, 3, 2, 1]);
-   */
-  static sectionSortAsc(arr: number[]): number[] {
-    const len = arr.length;
-    let sorted: number[] = Array(len);
+  private static min(arr: any[], compareBy: string = ""): { index: number; element: any } {
+    let lowest = Number.POSITIVE_INFINITY;
+    let index = -1;
 
+    for (let i = 0; i < arr.length; i++) {
+      const element = arr[i];
+      const temp = this.getTemp(element, compareBy);
+
+      if (temp < lowest) {
+        lowest = temp;
+        index = i;
+      }
+    }
+
+    return { index, element: arr[index] };
+  }
+
+  private static max(arr: any[], compareBy: string = ""): { index: number; element: any } {
+    let highest = Number.NEGATIVE_INFINITY;
+    let index = -1;
+
+    for (let i = 0; i < arr.length; i++) {
+      const element = arr[i];
+      const temp = this.getTemp(element, compareBy);
+
+      if (temp > highest) {
+        highest = temp;
+        index = i;
+      }
+    }
+
+    return { index, element: arr[index] };
+  }
+
+  private static getTemp(element: any, compareBy: string = "") {
+    if (typeof element === "number") return element;
+    else return element[compareBy];
+  }
+
+  static sectionSort(arr: any[], sortingType: sortingTypes, compareBy: string = ""): any[] {
+    const len = arr.length;
+
+    if (len < 2) {
+      return arr;
+    } else if (typeof arr[0] === "object" && compareBy === undefined) {
+      throw new Error("compareBy is required in the case of array of objects");
+    }
+
+    let sorted: any[] = Array(len);
     for (let i = 0; i < len; i++) {
-      const min = Math.min(...arr);
-      const index = arr.indexOf(min);
+      let e: { index: number; element: any };
+      if (sortingType === sortingTypes.ASCENDING) e = this.min(arr, compareBy);
+      else e = this.max(arr, compareBy);
+      const { index, element } = e;
+
       arr = arr.filter((v, ind) => ind !== index);
-      sorted[i] = min;
+      sorted[i] = element;
     }
 
     return sorted;
   }
 
-  /**
-   * Sort array of numbers descending using selection sort algorithm
-   * @param arr number[] array of numbers to get get sorted
-   * @returns number[] The sorted array
-   *
-   * @example MMZaghlool.Math.sectionSortDesc([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-   */
-  static sectionSortDesc(arr: number[]): number[] {
-    const len = arr.length;
-    let sorted: number[] = Array(len);
-
-    for (let i = 0; i < len; i++) {
-      const min = Math.max(...arr);
-      const index = arr.indexOf(min);
-      arr = arr.filter((v, ind) => ind !== index);
-      sorted[i] = min;
-    }
-
-    return sorted;
-  }
-
-  /**
-   * Sort array of numbers ascending using quick sort algorithm
-   * @param arr number[] array of numbers to get get sorted
-   * @returns number[] The sorted array
-   *
-   * @example MMZaghlool.Math.quickSortAsc([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-   */
-  static quickSortAsc(arr: number[]): number[] {
+  static quickSort(arr: any[], sortingType: sortingTypes, compareBy: string = ""): any[] {
     const len = arr.length;
 
     if (len < 2) {
       return arr;
+    } else if (typeof arr[0] === "object" && compareBy === undefined) {
+      throw new Error("compareBy is required in the case of array of objects");
     } else {
-      const pivot = arr[0];
+      const pivot = typeof arr[0] === "object" ? arr[0][compareBy] : arr[0];
+      const pElement = arr[0];
       let leftPartition = [];
       let rightPartition = [];
 
       for (let i = 1; i < len; i++) {
-        const element = arr[i];
+        const c = typeof arr[i] === "object" ? arr[i][compareBy] : arr[i];
+        const cElement = arr[i];
 
-        if (element < pivot) {
-          leftPartition.push(element);
+        if (sortingType === sortingTypes.ASCENDING) {
+          if (c < pivot) leftPartition.push(cElement);
+          else rightPartition.push(cElement);
         } else {
-          rightPartition.push(element);
+          if (c > pivot) leftPartition.push(cElement);
+          else rightPartition.push(cElement);
         }
       }
 
-      leftPartition = this.quickSortAsc(leftPartition);
-      rightPartition = this.quickSortAsc(rightPartition);
+      leftPartition = this.quickSort(leftPartition, sortingType, compareBy);
+      rightPartition = this.quickSort(rightPartition, sortingType, compareBy);
 
-      return [...leftPartition, pivot, ...rightPartition];
-    }
-  }
-
-  /**
-   * Sort array of numbers descending using quick sort algorithm
-   * @param arr number[] array of numbers to get get sorted
-   * @returns number[] The sorted array
-   *
-   * @example MMZaghlool.Math.quickSortDesc([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-   */
-  static quickSortDesc(arr: number[]): number[] {
-    const len = arr.length;
-
-    if (len < 2) {
-      return arr;
-    } else {
-      const pivot = arr[0];
-      let leftPartition = [];
-      let rightPartition = [];
-
-      for (let i = 1; i < len; i++) {
-        const element = arr[i];
-
-        if (element > pivot) {
-          leftPartition.push(element);
-        } else {
-          rightPartition.push(element);
-        }
-      }
-
-      leftPartition = this.quickSortDesc(leftPartition);
-      rightPartition = this.quickSortDesc(rightPartition);
-
-      return [...leftPartition, pivot, ...rightPartition];
+      return [...leftPartition, pElement, ...rightPartition];
     }
   }
 }
